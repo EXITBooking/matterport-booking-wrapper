@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matterport Booking Wrapper</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+      font-family: sans-serif;
+    }
+
+    #bookingFrame {
+      min-height: 500px;
+      width: 100%;
+      height: 100%;
+      border: none;
+      max-width: 700px;
+      max-height: 100vh;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    id="bookingFrame"
+    src="https://exitbooking.github.io/matterport-booking-redirect/"
+    title="Booking Page"
+  ></iframe>
+
+  <script>
+    window.addEventListener('message', function (event) {
+      if (event.data.bookingRedirect) {
+        document.getElementById('bookingFrame').src = event.data.bookingRedirect;
+      }
+    });
+  </script>
+</body>
+</html>
